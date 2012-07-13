@@ -87,10 +87,12 @@
   }
 
   , clearTarget: function () {
-    this.$target.val('')
-    this.$container.removeClass('combobox-selected')
-    this.selected = false
-    this.$target.trigger('change')
+    if(this.$target.val() != this.options.defaultValue) {
+        this.$target.val('')
+        this.$container.removeClass('combobox-selected')
+        this.selected = false
+        this.$target.trigger('change')
+    }
   }
 
   , refresh: function () {
@@ -215,6 +217,7 @@
   , menu: '<ul class="typeahead typeahead-long dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , placeholder: null
+  , defaultValue: ''
   }
 
   $.fn.combobox.Constructor = Combobox
